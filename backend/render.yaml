@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ignito-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql+psycopg://postgres:postgres@db:5432/ignito
+      - key: SECRET_KEY
+        value: change-me
