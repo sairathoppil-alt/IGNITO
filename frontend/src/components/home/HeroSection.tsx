@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Globe2, Sparkles, Star, Rocket, Flag, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
@@ -40,17 +40,28 @@ const STATS = [
 
 const COUNTDOWN_TARGET = new Date('2026-07-16T00:00:00');
 
-function useCountdown() {
-  return useMemo(() => {
-    const now = Date.now();
-    const distance = Math.max(0, COUNTDOWN_TARGET.getTime() - now);
-    const seconds = Math.floor((distance / 1000) % 60);
-    const minutes = Math.floor((distance / 1000 / 60) % 60);
-    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+function getCountdown(now: number) {
+  const distance = Math.max(0, COUNTDOWN_TARGET.getTime() - now);
+  const seconds = Math.floor((distance / 1000) % 60);
+  const minutes = Math.floor((distance / 1000 / 60) % 60);
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-    return { days, hours, minutes, seconds };
+  return { days, hours, minutes, seconds };
+}
+
+function useCountdown() {
+  const [countdown, setCountdown] = useState(() => getCountdown(Date.now()));
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setCountdown(getCountdown(Date.now()));
+    }, 1000);
+
+    return () => window.clearInterval(intervalId);
   }, []);
+
+  return countdown;
 }
 
 function CountdownCard({ label, value }: { label: string; value: number | string }) {
