@@ -115,8 +115,8 @@ function FeaturedEventCard({
   duration,
   difficulty,
   badge,
-  index,
-}: typeof featuredEvents[number] & { index: number }) {
+ 
+}: typeof featuredEvents[number]) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
@@ -300,8 +300,8 @@ export function HomeSections() {
           eyebrow="Featured Events"
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {featuredEvents.map((event, index) => (
-            <FeaturedEventCard key={event.id} {...event} index={index} />
+          {featuredEvents.map((event) => (
+            <FeaturedEventCard key={event.id} {...event} />
           ))}
         </div>
       </Section>
