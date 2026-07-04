@@ -34,7 +34,6 @@ import {
   ObservatoryIllustration,
   QuizIllustration,
   RoboticsIllustration,
-  SatelliteIllustration,
   TreasureIllustration,
   WebIllustration,
 } from '@/components/illustrations/CosmicIllustrations';
