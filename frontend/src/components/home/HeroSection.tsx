@@ -38,7 +38,7 @@ const STATS = [
   { value: 8, prefix: '₹', suffix: 'L+', label: 'Prize Pool' },
 ];
 
-const COUNTDOWN_TARGET = new Date('2026-03-12T00:00:00');
+const COUNTDOWN_TARGET = new Date('2026-07-16T00:00:00');
 
 function useCountdown() {
   return useMemo(() => {
@@ -110,7 +110,7 @@ export function HeroSection() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.4rem] border border-[var(--color-card-border)] bg-[var(--color-card)]/90 p-5 shadow-[0_10px_30px_rgba(15,23,42,0.05)] backdrop-blur-xl">
                 <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-muted)]">Date</p>
-                <p className="mt-3 text-xl font-semibold text-[var(--color-foreground)]">12–15 March 2026</p>
+                <p className="mt-3 text-xl font-semibold text-[var(--color-foreground)]">16 July 2026</p>
               </div>
               <div className="rounded-[1.5rem] border border-[var(--color-card-border)] bg-[var(--color-card)]/90 p-5 shadow-[var(--shadow-card)] backdrop-blur-xl">
                 <p className="text-sm uppercase tracking-[0.3em] text-[var(--color-muted)]">Location</p>

@@ -26,7 +26,18 @@ import { Badge } from '@/components/ui/Badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/Accordion';
 import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
-import { ObservatoryIllustration } from '@/components/illustrations/CosmicIllustrations';
+import {
+  AIIllustration,
+  CosmicIllustration,
+  CyberSecurityIllustration,
+  DesignIllustration,
+  ObservatoryIllustration,
+  QuizIllustration,
+  RoboticsIllustration,
+  SatelliteIllustration,
+  TreasureIllustration,
+  WebIllustration,
+} from '@/components/illustrations/CosmicIllustrations';
 import {
   featuredEvents,
   categoryCards,
@@ -63,16 +74,38 @@ const statItems = [
   { label: 'Speakers', value: 40, suffix: '+' },
 ];
 
-function eventImagePlaceholder(index: number) {
-  const gradients = [
-    'from-violet-500/10 via-fuchsia-300/10 to-sky-300/10',
-    'from-sky-500/10 via-cyan-300/10 to-violet-300/10',
-    'from-fuchsia-500/10 via-purple-300/10 to-pink-200/10',
-    'from-emerald-500/10 via-slate-300/10 to-cyan-200/10',
-    'from-rose-500/10 via-orange-300/10 to-yellow-200/10',
-    'from-indigo-500/10 via-sky-300/10 to-white/20',
-  ];
-  return gradients[index % gradients.length];
+function HomeIllustration({ category, className }: { category: string; className?: string }) {
+  const normalized = category.toLowerCase();
+
+  if (normalized.includes('ai') || normalized.includes('intelligence')) {
+    return <AIIllustration className={className} animated />;
+  }
+
+  if (normalized.includes('cyber') || normalized.includes('security')) {
+    return <CyberSecurityIllustration className={className} animated />;
+  }
+
+  if (normalized.includes('design') || normalized.includes('ux') || normalized.includes('interface')) {
+    return <DesignIllustration className={className} animated />;
+  }
+
+  if (normalized.includes('robot') || normalized.includes('hardware') || normalized.includes('electronics')) {
+    return <RoboticsIllustration className={className} animated />;
+  }
+
+  if (normalized.includes('hack') || normalized.includes('web')) {
+    return <WebIllustration className={className} animated />;
+  }
+
+  if (normalized.includes('quiz')) {
+    return <QuizIllustration className={className} animated />;
+  }
+
+  if (normalized.includes('treasure')) {
+    return <TreasureIllustration className={className} animated />;
+  }
+
+  return <CosmicIllustration className={className} animated />;
 }
 
 function FeaturedEventCard({
@@ -93,10 +126,11 @@ function FeaturedEventCard({
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="group overflow-hidden rounded-[2rem] border border-[var(--color-card-border)] bg-[var(--color-card)] shadow-[0_12px_36px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-primary)]/35 hover:shadow-[0_16px_40px_rgba(124,58,237,0.12)]"
     >
-      <div
-        className={`relative h-56 overflow-hidden rounded-t-[2rem] bg-gradient-to-br ${eventImagePlaceholder(index)}`}
-      >
+      <div className="relative h-56 overflow-hidden rounded-t-[2rem] border-b border-[var(--color-card-border)] bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.12),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.12),transparent_38%)]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18),transparent)]" />
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          <HomeIllustration category={category} className="h-full w-full max-w-[220px]" />
+        </div>
         <div className="absolute right-4 top-4 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.3em] text-[var(--color-primary)] shadow-[0_8px_24px_rgba(124,58,237,0.08)]">
           {badge}
         </div>
@@ -140,6 +174,9 @@ function CategoryTile({ title, description, icon }: { title: string; description
     >
       <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] shadow-[0_10px_30px_rgba(124,58,237,0.08)]">
         {Icon}
+      </div>
+      <div className="mt-5 overflow-hidden rounded-[1.2rem] border border-[var(--color-card-border)] bg-[linear-gradient(145deg,rgba(255,255,255,0.14),rgba(255,255,255,0.02))] p-2">
+        <HomeIllustration category={title} className="h-24 w-full" />
       </div>
       <h3 className="mt-5 text-lg font-semibold text-[var(--color-foreground)]">{title}</h3>
       <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">{description}</p>
@@ -209,13 +246,15 @@ function SponsorBar() {
   );
 }
 
-function GalleryItem() {
+function GalleryItem({ image }: { image: string }) {
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
       className="group relative overflow-hidden rounded-[2rem] border border-[var(--color-card-border)] bg-[var(--color-card)] shadow-[0_14px_36px_rgba(15,23,42,0.05)]"
     >
-      <div className="aspect-[4/3] bg-gradient-to-br from-purple-200/30 via-violet-200/10 to-sky-100/20" />
+      <div className="aspect-[4/3] overflow-hidden">
+        <img src={image} alt="IGNITO gallery preview" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+      </div>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(15,23,42,0.08)_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       <div className="absolute inset-x-0 bottom-0 p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <div className="rounded-3xl bg-[rgba(15,23,42,0.75)] p-4 text-sm text-white backdrop-blur-xl">View image</div>
@@ -362,13 +401,13 @@ export function HomeSections() {
         <SectionHeading title="Gallery Preview" subtitle="A refined glimpse at the moments and presentations coming to IGNITO." eyebrow="Gallery" />
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-[1.2fr_0.8fr]">
           <div className="grid gap-5 sm:grid-cols-2">
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
+            <GalleryItem image="/images/gal1.jpeg" />
+            <GalleryItem image="/images/gal2.jpeg" />
+            <GalleryItem image="/images/gal3.jpeg" />
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
-            <GalleryItem />
-            <GalleryItem />
+            <GalleryItem image="/images/gal4.jpeg" />
+            <GalleryItem image="/images/gal5.jpeg" />
           </div>
         </div>
         <div className="mt-8 flex justify-center">
