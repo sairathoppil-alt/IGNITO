@@ -26,6 +26,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/Accordion';
 import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
+import { ObservatoryIllustration } from '@/components/illustrations/CosmicIllustrations';
 import {
   featuredEvents,
   categoryCards,
@@ -157,34 +158,9 @@ function AboutIllustration() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(236,72,153,0.12),transparent_28%)]" />
       <div className="absolute left-6 top-6 h-28 w-28 rounded-full bg-[var(--color-primary)]/10 blur-3xl" />
       <div className="absolute right-8 top-16 h-20 w-20 rounded-full bg-[var(--color-accent)]/15 blur-3xl" />
-      <div className="absolute right-0 bottom-0 h-48 w-48 rounded-full border border-[var(--color-primary)]/20 bg-[rgba(255,255,255,0.1)]" />
-      <div className="relative grid gap-5">
-        <div className="grid grid-cols-2 gap-5">
-          <div className="relative overflow-hidden rounded-[2rem] bg-[rgba(255,255,255,0.12)] p-5 shadow-[0_20px_60px_rgba(124,58,237,0.08)]">
-            <div className="absolute right-0 top-0 h-16 w-16 rounded-full bg-[var(--color-primary)]/10 blur-3xl" />
-            <div className="absolute left-0 bottom-0 h-24 w-24 rounded-full bg-[var(--color-accent)]/10 blur-3xl" />
-            <div className="h-32 rounded-[1.75rem] border border-[var(--color-card-border)] bg-[rgba(255,255,255,0.1)]" />
-          </div>
-          <div className="relative overflow-hidden rounded-[2rem] bg-[rgba(255,255,255,0.1)] p-5 shadow-[0_20px_60px_rgba(124,58,237,0.08)]">
-            <div className="absolute left-4 top-4 h-12 w-12 rounded-full bg-[var(--color-primary)]/10" />
-            <div className="absolute right-4 bottom-4 h-12 w-12 rounded-full bg-[var(--color-accent)]/10" />
-            <div className="flex h-32 items-center justify-center rounded-[1.75rem] border border-[var(--color-card-border)] bg-[rgba(255,255,255,0.1)]">
-              <Sparkles className="h-10 w-10 text-[var(--color-primary)]" />
-            </div>
-          </div>
-        </div>
-        <div className="relative overflow-hidden rounded-[2rem] bg-[rgba(255,255,255,0.08)] p-5 shadow-[0_20px_60px_rgba(124,58,237,0.08)]">
-          <div className="absolute inset-x-0 top-0 h-20 bg-[rgba(255,255,255,0.12)]" />
-          <div className="absolute left-8 top-12 h-24 w-24 rounded-full border border-[var(--color-primary)]/25 bg-[rgba(255,255,255,0.12)]" />
-          <div className="absolute right-10 top-14 h-20 w-20 rounded-full bg-[rgba(236,72,153,0.14)] blur-2xl" />
-          <div className="absolute left-4 bottom-8 h-20 w-20 rounded-full bg-[rgba(255,255,255,0.12)]" />
-          <div className="flex h-44 items-center justify-center text-[var(--color-muted)]">
-            <div className="text-center text-sm leading-7">
-              <p className="font-semibold text-[var(--color-foreground)]">Exploration Grid</p>
-              <span>Placeholder cinematic illustration</span>
-            </div>
-          </div>
-        </div>
+      <div className="relative rounded-[2rem] border border-[var(--color-card-border)] bg-[rgba(255,255,255,0.12)] p-4 shadow-[0_20px_60px_rgba(124,58,237,0.08)] backdrop-blur-xl">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.18),transparent_32%)]" />
+        <ObservatoryIllustration className="w-full" animated />
       </div>
     </motion.div>
   );

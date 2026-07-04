@@ -2,32 +2,67 @@ import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import {
+  AIIllustration,
+  CosmicIllustration,
+  CyberSecurityIllustration,
+  DesignIllustration,
+  QuizIllustration,
+  RoboticsIllustration,
+  SatelliteIllustration,
+  TreasureIllustration,
+  WebIllustration,
+} from '@/components/illustrations/CosmicIllustrations';
 import type { CompetitionItem } from '@/types/api';
 
 function CompetitionIllustration({ category }: { category: string }) {
-  const palette = category.includes('AI') || category.includes('Hackathon')
-    ? 'from-violet-500/20 via-fuchsia-400/10 to-sky-400/10'
-    : category.includes('Cyber') || category.includes('Design')
-      ? 'from-slate-500/15 via-indigo-400/10 to-violet-400/10'
-      : 'from-indigo-400/15 via-slate-400/10 to-fuchsia-400/10';
+  const normalized = category.toLowerCase();
 
-  return (
-    <div className={`relative mb-5 h-32 overflow-hidden rounded-[1.25rem] border border-[var(--color-card-border)] bg-gradient-to-br ${palette}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.28),transparent_35%)]" />
-      <div className="absolute left-6 top-6 h-14 w-14 rounded-full border border-[var(--color-primary)]/20" />
-      <div className="absolute right-6 top-7 h-10 w-10 rounded-full border border-[var(--color-accent)]/20" />
-      <div className="absolute bottom-6 left-8 right-8 h-px bg-[var(--color-primary)]/20" />
-      <div className="absolute bottom-5 left-10 h-10 w-16 rounded-[999px] border border-[var(--color-primary)]/20" />
-      <div className="absolute bottom-5 right-10 h-10 w-16 rounded-[999px] border border-[var(--color-accent)]/20" />
-    </div>
-  );
+  if (normalized.includes('ai')) {
+    return <AIIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  if (normalized.includes('cyber')) {
+    return <CyberSecurityIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  if (normalized.includes('design')) {
+    return <DesignIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  if (normalized.includes('robot')) {
+    return <RoboticsIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  if (normalized.includes('electro') || normalized.includes('cad')) {
+    return <SatelliteIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  if (normalized.includes('web') || normalized.includes('hack')) {
+    return <WebIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  if (normalized.includes('quiz')) {
+    return <QuizIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  if (normalized.includes('treasure')) {
+    return <TreasureIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
+  }
+
+  return <CosmicIllustration className="mb-5 h-36 w-full rounded-[1.35rem] border border-[var(--color-card-border)] p-2" animated />;
 }
 
 export function CompetitionCard({ item }: { item: CompetitionItem }) {
   return (
-    <Card hover className="overflow-hidden">
+    <Card hover className="group overflow-hidden">
       <div className="p-6">
-        <CompetitionIllustration category={item.category} />
+        <div className="relative overflow-hidden rounded-[1.35rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04))] p-1 shadow-[0_18px_50px_rgba(124,58,237,0.08)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.14),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.12),transparent_38%)]" />
+          <div className="relative rounded-[1.2rem] bg-[var(--color-card)]/70 backdrop-blur-xl">
+            <CompetitionIllustration category={item.category} />
+          </div>
+        </div>
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">

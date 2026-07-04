@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Globe2, Sparkles, Star, Rocket, Flag, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
@@ -7,6 +6,7 @@ import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { Button } from '@/components/ui/Button';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Section } from '@/components/ui/Section';
+import { HeroIllustration as CosmicHeroIllustration } from '@/components/illustrations/CosmicIllustrations';
 
 const QUICK_ACTIONS = [
   {
@@ -67,67 +67,15 @@ function CountdownCard({ label, value }: { label: string; value: number | string
 }
 
 function HeroIllustration() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <div className="relative isolate w-full overflow-hidden rounded-[2rem] border border-[var(--color-card-border)] bg-[var(--color-card)]/90 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-2xl md:p-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(124,58,237,0.08),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(236,72,153,0.06),transparent_25%)]" />
       <div className="absolute left-8 top-8 h-24 w-24 rounded-full bg-[rgba(124,58,237,0.1)] blur-3xl" />
       <div className="absolute right-10 top-16 h-20 w-20 rounded-full border border-[var(--color-primary)]/15" />
       <div className="absolute right-0 bottom-0 h-56 w-56 rounded-full bg-[rgba(255,255,255,0.05)] blur-3xl" />
-      <div className="relative grid gap-4 sm:grid-cols-[1fr]">
-        <motion.div
-          animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="relative mx-auto h-[280px] w-[280px] rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02))] shadow-[0_28px_80px_rgba(124,58,237,0.12)]"
-        >
-          <div className="absolute inset-x-6 top-8 h-28 rounded-[1.5rem] bg-[rgba(255,255,255,0.1)] shadow-inner" />
-          <div className="absolute left-6 top-24 h-40 w-40 rounded-full bg-[rgba(255,255,255,0.2)] blur-2xl" />
-          <div className="absolute right-6 top-20 h-28 w-28 rounded-full bg-[rgba(124,58,237,0.22)] blur-2xl" />
-          <div className="absolute inset-x-0 bottom-0 h-36 rounded-b-[2rem] bg-[rgba(15,23,42,0.55)]" />
-          <div className="absolute left-8 top-24 h-20 w-20 rounded-full border border-[var(--color-primary)]/40 bg-[rgba(255,255,255,0.18)] shadow-[var(--shadow-glow)]" />
-          <div className="absolute right-10 top-32 h-24 w-24 rounded-full border border-[var(--color-accent)]/30 bg-[rgba(236,72,153,0.16)] blur-xl" />
-          <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[rgba(255,255,255,0.35)] shadow-[0_0_40px_rgba(255,255,255,0.2)]" />
-          <div className="absolute left-4 top-10 h-14 w-14 rounded-full bg-[rgba(255,255,255,0.34)] shadow-[0_0_25px_rgba(255,255,255,0.18)]" />
-          <div className="absolute right-8 bottom-12 h-24 w-24 rounded-full bg-[rgba(255,255,255,0.08)] border border-white/10" />
-
-          <motion.div
-            animate={reduceMotion ? undefined : { x: [0, 4, 0], y: [0, -5, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute left-8 top-32 h-24 w-24 rounded-full bg-[var(--color-background)]/90 shadow-[0_18px_48px_rgba(15,23,42,0.12)]"
-          >
-            <div className="absolute inset-4 rounded-full bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.35),transparent_70%)]" />
-          </motion.div>
-
-          <motion.div
-            animate={reduceMotion ? undefined : { rotate: [0, 2, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute left-1/2 top-16 h-20 w-20 -translate-x-1/2 rounded-full border border-[var(--color-primary)]/30 bg-[rgba(255,255,255,0.1)]"
-          />
-
-          <div className="absolute left-0 right-0 top-8 mx-auto h-0.5 w-24 rounded-full bg-white/20" />
-          <div className="absolute left-14 top-40 h-10 w-10 rounded-full bg-[rgba(255,255,255,0.22)] shadow-[0_0_20px_rgba(255,255,255,0.12)]" />
-          <div className="absolute right-14 top-48 h-12 w-12 rounded-full bg-[rgba(255,255,255,0.24)] border border-white/10" />
-
-          <div className="absolute left-8 bottom-10 flex h-20 w-20 items-center justify-center rounded-full bg-[rgba(255,255,255,0.18)] shadow-[0_12px_30px_rgba(124,58,237,0.16)]">
-            <Star className="h-8 w-8 text-[var(--color-primary)]" />
-          </div>
-
-          <div className="absolute bottom-8 right-8 flex h-20 w-20 items-center justify-center rounded-full bg-[rgba(255,255,255,0.14)] backdrop-blur-xl">
-            <div className="h-3 w-3 rounded-full bg-[var(--color-accent)] shadow-[var(--shadow-glow)]" />
-          </div>
-        </motion.div>
-
-        <motion.div
-          animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -right-20 top-8 h-24 w-24 rounded-full border border-[var(--color-primary)]/25 bg-[rgba(255,255,255,0.08)] shadow-[0_0_40px_rgba(124,58,237,0.16)]"
-        />
-        <motion.div
-          animate={reduceMotion ? undefined : { x: [0, -6, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -left-16 bottom-10 h-28 w-28 rounded-full border border-[var(--color-accent)]/25 bg-[rgba(255,255,255,0.08)] shadow-[0_0_40px_rgba(236,72,153,0.12)]"
-        />
+      <div className="relative mx-auto flex max-w-[320px] items-center justify-center">
+        <div className="absolute inset-0 rounded-[2rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.3),rgba(255,255,255,0.04))]" />
+        <CosmicHeroIllustration className="w-full max-w-[320px]" animated />
       </div>
     </div>
   );
